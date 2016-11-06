@@ -7,6 +7,7 @@ Created on Sat Nov  5 17:20:57 2016
 
 import pygame, math
 from random import randint
+import numpy as np
 
 class BaseClass(pygame.sprite.Sprite):
     allsprites = pygame.sprite.Group()    
@@ -53,7 +54,7 @@ class Hero(BaseClass):
         
 class Target(BaseClass):
     
-#    List = pygame.sprite.Group()
+    List = pygame.sprite.Group()
     
     def __init__(self, x, y, image_string):
         Target.List.add(self)
@@ -63,10 +64,21 @@ class Target(BaseClass):
 
 class Ray(BaseClass):
     
-#    List = pygame.sprite.Group()
+    List = pygame.sprite.Group()
     
-    def __init__(self, x, y, velx, vely, direction, image_string):
+    def __init__(self, x, y, velx, vely, direction, mass, image_string):
         
         self.direction = direction
         self.velx, self.vely = 100, 100
         
+
+class Gfield(BaseClass):
+    
+    List = pygame.sprite.Group()
+    
+    def pull(G, mass, r):
+        G=6.67*10**(-11)
+        r = ((Ray.x, Ray.y)-(Gfield.x, Gfield.y))
+        return np.cross(((G*mass)/r**3), r)
+    
+    

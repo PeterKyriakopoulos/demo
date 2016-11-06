@@ -7,7 +7,7 @@ Created on Fri Oct 28 16:42:45 2016
 
 import pygame, sys
 from classes import *
-from interaction import interaction
+#from interaction import interaction
 
 
 pygame.init()
@@ -26,10 +26,11 @@ total_frames = 0
 #background = pygame.image.load("images/forest.jpg")
 background = pygame.image.load("images/demoback.png")
 hero = Hero(scwidth - 1900, scheight - 400, "images/demochar.png")
-target = (scwidth - 1500, scheight - 400, "images/demotarget.png")
+
+#target = Target(scwidth - 1500, scheight - 400, "images/demotarget.png")
 
 while True:
-    interaction(hero, FPS, total_frames)
+#    interaction(hero, FPS, total_frames)
 #   LOGIC (ex. movement)
     hero.motion(scwidth, scheight)
     total_frames += 1
